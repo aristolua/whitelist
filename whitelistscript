@@ -1,1 +1,14 @@
+local Players = game:GetService("Players")
 
+local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
+repeat wait() until player and player.UserId
+
+-- قائمة الـ Whitelist
+local whitelist = {
+    [43819341994917] = true,
+}
+
+if not whitelist[player.UserId] then
+    player:Kick("Script Down Go to Script-Panel Room To get the new script")
+    return
+end
